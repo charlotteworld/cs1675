@@ -2,6 +2,7 @@
 #This file takes a text file with a list of stocks grouped by size, and
 #saves group objects for each of the groups as .pkl files. The .pkl files
 #can then be used by other scripts that need access to the data
+#Only run this script when the saved objects need updated
 
 import yahoo_finance as yf
 from optparse import OptionParser
@@ -14,8 +15,6 @@ parser.add_option("-f", "--file", dest="filename",
 (options,args) = parser.parse_args()
 
 filename = options.filename
-#print options.filename
-#print args
 fd = open(filename, "rb")
 
 groups = []
@@ -40,11 +39,5 @@ fd.close()
 
 
 for group in groups:
-#	print group.name
-#	print group.low
-#	print group.high
-#	print group.printShares()
 	fname = group.name + ".pkl"
 	object_saver.save(fname, group)
-	#with open(fname, 'wb') as output:
-	#	pickle.dump(group, output, pickle.HIGHEST_PROTOCOL)

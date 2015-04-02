@@ -8,3 +8,5 @@ object_saver.py - python script that saves objects using pickle. Use this to sav
 stock_list.txt - the list of stocks
 
 create_stock_dict.py - run this script to update the .pkl files for the groups
+
+raw_data.py: run this with two arguments(starting date and ending date) in format of yyyy-mm-dd

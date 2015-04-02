@@ -5,11 +5,18 @@ class Group:
                 self.name = name
                 self.low = low
                 self.high = high
-                self.shares = []
+                self.shares = {}
 
-        def addShare(self, share):
-                self.shares.append(share)
+        def addShare(self, ticker, share):
+                self.shares[ticker] = share
 
 	def printShares(self):
-		for share in self.shares:
-			print share.get_info()
+		for ticker in self.shares:
+			print self.shares[ticker].get_info()
+
+	def getTickers(self):
+		tickerlist = []
+		for ticker in self.shares:
+			tickerlist.append(ticker)
+
+		return tickerlist

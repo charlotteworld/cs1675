@@ -1,14 +1,30 @@
+#This file contains functions for calculating the simple moving average
+#and the exponential moving average over a period of time for one share
+
 from object_saver import load
 from pprint import pprint
 
 
+#This function calculates the simple moving average for a single date
+#params
+#	hist_data - the yahoo_finance historical data for a single stock
+#	period - an int for the number of days to calculate the moving average
+#	start - an index into the hist_data array for the date to calculate on
+#returns
+#	float - the simple moving average
 def sma_from_start(hist_data, period, start):
 	running_sum = 0.0
 	for i in range(0, period):
 		running_sum = running_sum + float(hist_data[start + i]['Close'])
 	sma = running_sum / period	
 	return sma
-	
+
+#This function calculates the simple moving averages for each day in a set of historical data for a given stock
+#params
+#	hist_data - the yahoo_finance historical data for a single stock
+#	period - an into for the number of days to calculate the moving average
+#returns
+#	dictionary(date, sma) - the simple moving average for each date in hist_data	
 def sma(hist_data, period):
 	smas = {}
 	start = len(hist_data) - period
@@ -16,6 +32,13 @@ def sma(hist_data, period):
 		smas[hist_data[start]['Date']] = sma_from_start(hist_data, period, start)
 		start = start - 1
 	return smas
+
+#This function calculates the exponential moving average for each day in a set of historical data for a given stock
+#params
+#	hist_data - the yahoo_fiance historical data for a single stock
+#	period - an int for the number of days for the average
+#returns
+#	dictionary(date, ema) - the exponential moving average for each date in hist_data
 def ema(hist_data, period):
 	emas = {}
 	start = len(hist_data) - period

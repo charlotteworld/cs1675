@@ -3,6 +3,7 @@
 
 from object_saver import load
 from pprint import pprint
+import sys
 
 
 #This function calculates the simple moving average for a single date
@@ -37,19 +38,37 @@ def sma(hist_data, period):
 #params
 #	hist_data - the yahoo_fiance historical data for a single stock
 #	period - an int for the number of days for the average
+#	date - optional string argument to specify a single date desired. Format as YYYY-MM-DD
 #returns
 #	[dictionary(date, ema), array(ema)] - the exponential moving average for each
 #					 date in hist_data. The array is in order from
 #					most recent to oldest date
-def ema(hist_data, period):
+#def ema(hist_data, period, date = None):
+def ema(*arg):
+	hist_data = arg[0]
+	period = arg[1]
 	emas_dict = {}
 	emas_array = []
-	start = len(hist_data) - period
+	if len(arg) == 2:
+		start = len(hist_data) - period
+		loop_end = 0
+	else:
+		date = arg[2]
+		start = 0
+		for s in hist_data:
+			if s['Date'] == date:
+				break;
+			start = start + 1 
+		if start == len(hist_data):
+			print("Error: That date does not exist in the historical data provided. Function terminating.")
+			sys.exit()
+		loop_end = start
+		print "start: " + str(start)
 	multiplier = 2.0 / (period + 1)
 #	print "Multiplier: " + str(multiplier)
 	previous_day_ema = sma_from_start(hist_data, period, start)
 #	print "First ema: " + str(previous_day_ema) + " at start: " + str(start)
-	while start >= 0:
+	while start >= loop_end:
 		new_ema = (float(hist_data[start]['Close']) - previous_day_ema) * multiplier + previous_day_ema
 		emas_dict[hist_data[start]['Date']]  = new_ema
 		emas_array.append(new_ema)

@@ -38,9 +38,12 @@ def sma(hist_data, period):
 #	hist_data - the yahoo_fiance historical data for a single stock
 #	period - an int for the number of days for the average
 #returns
-#	dictionary(date, ema) - the exponential moving average for each date in hist_data
+#	[dictionary(date, ema), array(ema)] - the exponential moving average for each
+#					 date in hist_data. The array is in order from
+#					most recent to oldest date
 def ema(hist_data, period):
-	emas = {}
+	emas_dict = {}
+	emas_array = []
 	start = len(hist_data) - period
 	multiplier = 2.0 / (period + 1)
 #	print "Multiplier: " + str(multiplier)
@@ -48,11 +51,13 @@ def ema(hist_data, period):
 #	print "First ema: " + str(previous_day_ema) + " at start: " + str(start)
 	while start >= 0:
 		new_ema = (float(hist_data[start]['Close']) - previous_day_ema) * multiplier + previous_day_ema
-		emas[hist_data[start]['Date']]  = new_ema
+		emas_dict[hist_data[start]['Date']]  = new_ema
+		emas_array.append(new_ema)
 		previous_day_ema = new_ema
 		start = start - 1
 
-	return emas
+	emas_array.reverse()
+	return [emas_dict, emas_array]
 
 def main():
 	largegroup = load('large.pkl')
@@ -63,7 +68,7 @@ def main():
 
 	hist_data = first_share.get_historical('2014-04-01', '2014-04-29')
 	smas = sma(hist_data, 10)
-	emas = ema(hist_data, 10)
+	[emas, emas_array] = ema(hist_data, 10)
 	print "Simple Moving Averages"
 	for date in smas:
 		print date + ": " + str(smas[date])
@@ -72,6 +77,9 @@ def main():
 	for date in emas:
 		print date + ": " + str(emas[date])
 	#pprint(hist_data)
+
+	for v in emas_array:
+		print str(v)
 
 if __name__ == "__main__":
 	main()

@@ -10,9 +10,12 @@ class Group:
         def addShare(self, ticker, share):
                 self.shares[ticker] = share
 
-	def printShares(self):
+	def getShares(self):
+		sharelist = []
 		for ticker in self.shares:
-			print self.shares[ticker].get_info()
+			sharelist.append(self.shares[ticker])
+
+		return sharelist
 
 	def getTickers(self):
 		tickerlist = []
@@ -20,3 +23,9 @@ class Group:
 			tickerlist.append(ticker)
 
 		return tickerlist
+
+	def printShares(self):
+		for ticker in self.shares:
+			print self.shares[ticker].get_info()
+
+

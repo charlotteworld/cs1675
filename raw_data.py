@@ -10,13 +10,17 @@ def main():
 		groups = ['small', 'medium', 'large']
 		object_groups = []
 
+		#yahoo = Share('YHOO')
+		#print yahoo.get_historical('2014-04-25', '2014-04-29')
+		#print sys.argv[1], sys.argv[2]
 		for g in groups:
 			object_groups.append(load(g + '.pkl'))
 
 		file_object = open("raw_data.txt","w+" )
 		for small_g in object_groups:
 			for share in small_g.shares:
-				data_list = share.get_historical(str(sys.argv[1]), str(sys.argv[2]))
+				# print share
+				data_list = small_g.shares[share].get_historical(str(sys.argv[1]), str(sys.argv[2]))
 				for index in range(len(data_list)):
 					file_object.write('Symbol: '+str(data_list[index]['Symbol'])+ ' Date : '+str(data_list[index]['Date']) + ' Volume: '+str(data_list[index]['Volume']) + ' Close : '+str(data_list[index]['Close']) +"\n")
 				#print(data_list[index])

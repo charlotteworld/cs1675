@@ -63,7 +63,7 @@ def ema(*arg):
 			print("Error: That date does not exist in the historical data provided. Function terminating.")
 			sys.exit()
 		loop_end = start
-		print "start: " + str(start)
+		#print "start: " + str(start)
 	multiplier = 2.0 / (period + 1)
 #	print "Multiplier: " + str(multiplier)
 	previous_day_ema = sma_from_start(hist_data, period, start)

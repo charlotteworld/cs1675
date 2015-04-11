@@ -1,13 +1,17 @@
+#starting date, ending date
+
 import io 
 import sys
 from object_saver import load
+from statistics import ema
 from yahoo_finance import Share
 
 def main():
 	# ewma = pandas.stats.moments.ewma
 	# yahoo = Share('YHOO')
 	try:
-		groups = ['small', 'medium', 'large']
+		#groups = ['small', 'medium', 'large']
+		groups = [ 'large']
 		object_groups = []
 
 		#yahoo = Share('YHOO')
@@ -26,9 +30,9 @@ def main():
 				X_label[i] = []
 				data_list = small_g.shares[share].get_historical(str(sys.argv[1]), str(sys.argv[2]))
 				for index in range(len(data_list)):
-					file_object.write('Symbol: '+str(data_list[index]['Symbol'])+ ' Date : '+str(data_list[index]['Date']) + ' Volume: '+str(data_list[index]['Volume']) + ' Open : '+str(data_list[index]['Open']) + ' Close : '+str(data_list[index]['Close']) + ' High : '+str(data_list[index]['High']) + ' Low : '+str(data_list[index]['Low'])+ ' Adj_Close : '+str(data_list[index]['Adj_Close']) +"\n")
-
-					X_label[i].append([ data_list[index]['Volume'],data_list[index]['Open'],data_list[index]['Close'],data_list[index]['High'],data_list[index]['Low'],data_list[index]['Adj_Close']])
+					file_object.write('Symbol: '+str(data_list[index]['Symbol'])+ ' Date : '+str(data_list[index]['Date']) + ' Volume: '+str(data_list[index]['Volume']) + ' Open : '+str(data_list[index]['Open']) + ' Close : '+str(data_list[index]['Close']) + ' High : '+str(data_list[index]['High']) + ' Low : '+str(data_list[index]['Low'])+ ' Adj_Close : '+str(data_list[index]['Adj_Close']) + "\n")
+					if( index < (len(data_list)-10) ):
+						X_label[i].append([ data_list[index]['Volume'],data_list[index]['Open'],data_list[index]['Close'],data_list[index]['High'],data_list[index]['Low'],data_list[index]['Adj_Close'], ema(data_list, 10, data_list[index]['Date'])[1][0]])					
 				i=+1
 		print X_label[0]
 				#print(data_list[index])

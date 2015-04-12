@@ -1,5 +1,5 @@
 -large,100B,-1
-BABA,Alibaba Group Holding Limited
+MA,Mastercard Incorporated
 V,Visa Inc.
 AAPL,APPLE
 GOOG,GOOGLE

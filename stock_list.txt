@@ -69,7 +69,7 @@ NSP,Insperity
 RENN,Renren
 JOBS,51job
 WIX,Wix.com
-SEDG,SolarEdge_Technologies
+SIGM,Sigma Designs Inc.
 TTMI,TTM_Technologies
 VDSI,VASCO_Data_Security_International
 SPSC,SPS_Commerce

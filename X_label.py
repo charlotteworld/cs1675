@@ -7,7 +7,7 @@ from statistics import ema
 from yahoo_finance import Share
 
 
-def main():
+def main(start_date, end_date, printValue):
 	# ewma = pandas.stats.moments.ewma
 	# yahoo = Share('YHOO')
 	try:
@@ -31,7 +31,7 @@ def main():
 				# print share
 				X_label[i] = []
 				Y_label[i] = []
-				data_list = small_g.shares[share].get_historical(str(sys.argv[1]), str(sys.argv[2]))
+				data_list = small_g.shares[share].get_historical(start_date, end_date)
 				for index in range(len(data_list)):
 					file_object.write('Symbol: '+str(data_list[index]['Symbol'])+ ' Date : '+str(data_list[index]['Date']) + ' Volume: '+str(data_list[index]['Volume']) + ' Open : '+str(data_list[index]['Open']) + ' Close : '+str(data_list[index]['Close']) + ' High : '+str(data_list[index]['High']) + ' Low : '+str(data_list[index]['Low'])+ ' Adj_Close : '+str(data_list[index]['Adj_Close']) + "\n")
 					if( index < (len(data_list)-9) ):
@@ -42,8 +42,11 @@ def main():
 						if data_list[index]['Close'] > data_list[j]['Close']:
 							Y_label[i].append(2)
 				i=+1
-		print X_label[0]
-		print Y_label[0]
+		if(printValue):
+			print X_label[0]
+			print Y_label[0]
+		else:
+			return [X_label, Y_label]
 				#print(data_list[index])
 	# data_list = yahoo.get_historical('2014-04-25', '2014-05-29')
 	except IOError:
@@ -51,5 +54,8 @@ def main():
 	else:
   		print "Written content in the file successfully"
   		file_object.close() 
+		
+#def getData():
+	
 
-if __name__ == "__main__": main()
+if __name__ == "__main__": main( str(sys.argv[1]), str(sys.argv[2]),True) 

@@ -1,4 +1,6 @@
 -large,100B,-1
+BABA,Alibaba Group Holding Limited
+V,Visa Inc.
 AAPL,APPLE
 GOOG,GOOGLE
 MSFT,MICROSOFT
@@ -9,6 +11,19 @@ IBM,IBM
 INTC,INTEL
 CSCO,CISCO
 QCOM,QUALCOMM
+GE,General_Electric
+T,AT&T
+UTX,United_Technologies_Corporation
+VZ,Verizon_Communications
+TSM,Taiwan_Semiconductor_Manufacturing_Company
+QCOM,QUALCOMM_Incorporated
+CMCSA,Comcast_Corporation
+COP,ConocoPhillips
+SAP,SAP_SE
+BA,Boeing_Company
+CHL,China_Mobile
+EBAY,eBay
+DCM,NTT_DOCOMO
 -medium,25B,65B
 TXN,TEXAS_INSTRUMENTS
 PCLN,PRICELINE
@@ -17,9 +32,8 @@ EMC,EMC
 CRM,SALESFORCE.COM
 YHOO,YAHOO
 VMW,VMWARE
-TWTR,TWITTER
+TWTR,TWITTER	
 SNE,SONY
-SAP,SAP SE
 BIDU,Baidu Inc.
 ADBE,Adobe Systems Incorporated	
 LNKD,LinkedIn Corporation
@@ -35,7 +49,9 @@ NOK,Nokia Corporation
 AMAT,Applied Materials Inc.
 INTU,Intuit Inc.
 CERN,Cerner Corporation
--small,-1,1B
+NXPI,NXP Semiconductors N.V.
+-small,-1,2B
+SOHU,Sohu.com
 BBOX,BLACKBOX
 CIR,CIRCOR_INTERNATIONAL
 ITG,INVESTMENT_TECHNOLOGY_GROUP
@@ -46,3 +62,17 @@ CHGG,CHEGG
 SSNI,SILVER_SPRING_NETWORKS
 CALX,CALIX
 LRN,K12
+IRBT,iRobot Corp
+IPGP,IPG Photonics
+TISI,TEAM
+NSP,Insperity
+RENN,Renren
+JOBS,51job
+WIX,Wix.com
+SEDG,SolarEdge_Technologies
+TTMI,TTM_Technologies
+VDSI,VASCO_Data_Security_International
+SPSC,SPS_Commerce
+SYKE,Sykes_Enterprises
+TWOU,2U
+TBI,TrueBlue

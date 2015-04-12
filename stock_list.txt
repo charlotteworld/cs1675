@@ -9,7 +9,7 @@ IBM,IBM
 INTC,INTEL
 CSCO,CISCO
 QCOM,QUALCOMM
--medium,30B,60B
+-medium,25B,65B
 TXN,TEXAS_INSTRUMENTS
 PCLN,PRICELINE
 HPQ,HP
@@ -19,6 +19,22 @@ YHOO,YAHOO
 VMW,VMWARE
 TWTR,TWITTER
 SNE,SONY
+SAP,SAP SE
+BIDU,Baidu Inc.
+ADBE,Adobe Systems Incorporated	
+LNKD,LinkedIn Corporation
+AVGO,Avago Technologies Limited
+INFY,Infosys Limited
+ADP,Automatic Data Processing, Inc.
+CTSH,Cognizant Technology Solutions Corporation
+ITW,Illinois Tool Works Inc.
+WIT,Wipro Limited
+ETN,Eaton Corporation PLC
+MU,Micron Technology Inc.
+NOK,Nokia Corporation
+AMAT,Applied Materials Inc.
+INTU,Intuit Inc.
+CERN,Cerner Corporation
 -small,-1,1B
 BBOX,BLACKBOX
 CIR,CIRCOR_INTERNATIONAL

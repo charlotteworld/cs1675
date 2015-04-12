@@ -78,6 +78,17 @@ def ema(*arg):
 	emas_array.reverse()
 	return [emas_dict, emas_array]
 
+def labels(hist_data):
+	y = [0]*(len(hist_data)-1)
+	
+	for i in range(0, len(y)):
+		if hist_data[i]['Close'] >= hist_data[i+1]['Close']:
+			y[i] = 1
+		else:
+			y[i] = -1
+
+	return y
+
 def main():
 	largegroup = load('large.pkl')
 

@@ -78,14 +78,35 @@ def ema(*arg):
 	emas_array.reverse()
 	return [emas_dict, emas_array]
 
+def features(hist_data):
+	x = []
+	emas = ema(hist_data, 10)[1]
+	for i in range(1, len(emas)-1):	#changed start from 0 to 1 in attempt to correct x-y offset
+		xstar = []
+		xstar.append(float(hist_data[i]['Volume']))
+		xstar.append(float(hist_data[i]['Open']))
+		xstar.append(float(hist_data[i]['Close']))
+		xstar.append(float(hist_data[i]['High']))
+		xstar.append(float(hist_data[i]['Low']))
+		xstar.append(float(hist_data[i]['Adj_Close']))
+		xstar.append(emas[i])
+		x.append(xstar)
+	if len(x) == 0:
+		print("Error: attempting to return None for features")
+	
+		
+	return x	
+
 def labels(hist_data):
 	y = [0]*(len(hist_data)-1)
 	
 	for i in range(0, len(y)):
 		if hist_data[i]['Close'] >= hist_data[i+1]['Close']:
-			y[i] = 1
+			y[i] = 2
 		else:
-			y[i] = -1
+			y[i] = 1
+	if len(y) == 0:
+		print("Error: attempting to return None for labels")
 
 	return y
 

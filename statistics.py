@@ -83,12 +83,12 @@ def features(hist_data):
 	emas = ema(hist_data, 10)[1]
 	for i in range(1, len(emas)-1):	#changed start from 0 to 1 in attempt to correct x-y offset
 		xstar = []
-		xstar.append(float(hist_data[i]['Volume']))
-		xstar.append(float(hist_data[i]['Open']))
-		xstar.append(float(hist_data[i]['Close']))
-		xstar.append(float(hist_data[i]['High']))
-		xstar.append(float(hist_data[i]['Low']))
-		xstar.append(float(hist_data[i]['Adj_Close']))
+	#	xstar.append(float(hist_data[i]['Volume']))
+	#	xstar.append(float(hist_data[i]['Open']))
+	#	xstar.append(float(hist_data[i]['Close']))
+	#	xstar.append(float(hist_data[i]['High']))
+	#	xstar.append(float(hist_data[i]['Low']))
+	#	xstar.append(float(hist_data[i]['Adj_Close']))
 		xstar.append(emas[i])
 		x.append(xstar)
 	if len(x) == 0:

@@ -6,8 +6,12 @@ class Group:
                 self.low = low
                 self.high = high
                 self.shares = {}
+		self.models = {}
+     
+	def addModel(self, share, model):
+		self.models[share] = model
 
-        def addShare(self, ticker, share):
+  	def addShare(self, ticker, share):
                 self.shares[ticker] = share
 
 	def getShares(self):

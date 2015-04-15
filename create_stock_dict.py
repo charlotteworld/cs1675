@@ -31,10 +31,14 @@ for line in fd:
 
 	else:
 		splitline = line.split(',')
-		share = yf.Share(splitline[0])
-		current_group.addShare(splitline[0], share)
-
-
+		print splitline
+		try:
+			share = yf.Share(splitline[0])
+			current_group.addShare(splitline[0], share)
+		except TypeError:
+			print "Type error on: " , splitline[0]
+		except AttributeError:
+			print "Attribute error on: " , splitline[0]
 fd.close()
 
 

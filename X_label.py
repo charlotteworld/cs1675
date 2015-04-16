@@ -2,6 +2,7 @@
 
 import io 
 import sys
+
 from object_saver import load
 from statistics import ema
 from yahoo_finance import Share
